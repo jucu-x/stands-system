@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('institutions', function (Blueprint $table) {
+        Schema::create('anonymous_stand_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained();
-
+            $table->foreignId('stand_request_id')->unique()->constrained();
+            $table->string('name');
+            $table->string('email');
             $table->text('activity')->nullable();
             $table->string('address')->nullable();
             $table->string('phone_number', 100)->nullable();
@@ -27,9 +28,6 @@ return new class extends Migration
             $table->string('linkedin')->nullable();
             $table->string('youtube')->nullable();
 
-            $table->foreignId('created_by')->nullable()->constrained("users", 'id');
-            $table->foreignId('updated_by')->nullable()->constrained('users', 'id');
-            $table->timestamps();
         });
     }
 
@@ -38,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('institutions');
+        Schema::dropIfExists('anonymous_stand_requests');
     }
 };

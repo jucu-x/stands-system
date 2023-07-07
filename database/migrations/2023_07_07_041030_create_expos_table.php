@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('expos', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name');
+            $table->string('version')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('description')->nullable();
+            $table->string('organizer')->nullable();
+            $table->string('logo')->nullable();
+
+            $table->foreignId('created_by')->constrained("users", 'id');
+            $table->foreignId('updated_by')->constrained('users', 'id');
             $table->timestamps();
         });
     }

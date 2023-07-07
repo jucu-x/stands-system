@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('stand_requests', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('stand_id')->constrained();
+            $table->text('why')->nullable();
+            $table->text('request_message')->nullable();
+            $table->date('stand_start_date');
+            $table->date('stand_end_date');
+            $table->boolean('attended')->default(false);
+            $table->foreignId('attended_by')->constrained('users', 'id');
             $table->timestamps();
         });
     }
