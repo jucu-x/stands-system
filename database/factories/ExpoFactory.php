@@ -17,7 +17,7 @@ class ExpoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            
         ];
     }
 }
