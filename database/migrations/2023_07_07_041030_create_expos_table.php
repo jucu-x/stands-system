@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('organizer')->nullable();
             $table->string('logo')->nullable();
 
-            $table->foreignId('created_by')->constrained("users", 'id');
-            $table->foreignId('updated_by')->constrained('users', 'id');
+            $table->foreignId('created_by')->nullable()->constrained("users", 'id')->onDelete("SET NULL");
+            $table->foreignId('updated_by')->nullable()->constrained('users', 'id')->onDelete("SET NULL");
             $table->timestamps();
         });
     }

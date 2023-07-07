@@ -15,7 +15,6 @@ class Expo extends Model
         "end_date",
         "description",
         "organizer",
-        "logo",
-        "created_by"
+        "logo"
     ];
 }

@@ -3,10 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Expo;
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Date;
 
 class ExpoSeeder extends Seeder
 {
@@ -24,8 +21,6 @@ class ExpoSeeder extends Seeder
             "description" => "Disfruta FITECTUR 2022",
             "organizer" => "A-TEC",
             "logo" => "/storage/fitectur.png",
-            "created_by" => User::where('email', 'admin@jucux.com')->first()->id,
-            "updated_by" => User::where('email', 'admin@jucux.com')->first()->id,
         ]);
     }
 }
