@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stands</title>
     @vite('resources/scss/app.scss')
+    <script>
+
+    </script>
 </head>
 <body>
+    <x-dark-mode-toggle/>
     {{$slot}}
     @vite('resources/ts/app.ts')
 </body>
