@@ -22,9 +22,9 @@ return new class extends Migration
             $table->float('width')->nullable();
             $table->float('length')->nullable();
 
-            $table->foreignId('expo_id')->constrained();
-            $table->foreignId('created_by')->constrained("users", 'id');
-            $table->foreignId('updated_by')->constrained('users', 'id');
+            $table->foreignId('expo_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('created_by')->nullable()->constrained("users", 'id')->onDelete('SET NULL');
+            $table->foreignId('updated_by')->nullable()->constrained('users', 'id')->onDelete('SET NULL');
 
             $table->timestamps();
         });

@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('version')->nullable();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
             $table->string('description')->nullable();
             $table->string('organizer')->nullable();
             $table->string('logo')->nullable();
