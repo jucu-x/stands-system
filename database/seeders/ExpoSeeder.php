@@ -22,5 +22,23 @@ class ExpoSeeder extends Seeder
             "organizer" => "A-TEC",
             "logo" => "/storage/fitectur.png",
         ]);
+        Expo::create([
+            "version"=>"lp-2da",
+            "name" => "Fexpo",
+            "start_date" => "2022-01-06",
+            "end_date" => "2022-01-10",
+            "description" => "La feria de expos",
+            "organizer" => "Someones INC",
+            "logo" => "/storage/fexpo.png",
+        ]);
+        Expo::create([
+            "version"=>"0",
+            "name" => "FITECTUR",
+            "start_date" => "2021-08-09",
+            "end_date" => "2021-08-14",
+            "description" => "Disfruta FITECTUR 2021",
+            "organizer" => "A-TEC",
+            "logo" => "/storage/fitectur2021.png",
+        ]);
     }
 }

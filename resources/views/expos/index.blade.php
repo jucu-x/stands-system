@@ -1,6 +1,6 @@
 <x-layouts.base>
     <h1>Hola</h1>
     @foreach ($expos as $expo)
-        <p>{{$expo->name}}</p>
+        <p>{{$expo->name}} {{$expo->version}}</p>
     @endforeach
 </x-layouts.base>
