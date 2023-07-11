@@ -17,4 +17,8 @@ class Expo extends Model
         "organizer",
         "logo"
     ];
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
 }
