@@ -21,7 +21,7 @@ class ExpoController extends Controller
      */
     public function create()
     {
-        //
+        return view('expos.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class ExpoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Expo::create($request->all());
+        return redirect()->route('expos.index');
     }
 
     /**
@@ -45,7 +46,7 @@ class ExpoController extends Controller
      */
     public function edit(Expo $expo)
     {
-        //
+        return view('expos.edit', ['expo'=>$expo]);
     }
 
     /**
@@ -53,7 +54,8 @@ class ExpoController extends Controller
      */
     public function update(Request $request, Expo $expo)
     {
-        //
+        $expo->update($request->all());
+        return redirect()->route('expos.index');
     }
 
     /**

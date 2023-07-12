@@ -42,7 +42,7 @@
                     </td>
 
                     <td class="px-6 py-4 flex gap-4">
-                        <a data-tooltip-target="tooltip-edit-link" href="#"
+                        <a data-tooltip-target="tooltip-edit-link" href="{{route('expos.edit', $expo)}}"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="ri-pencil-fill"></i>
                         </a>

@@ -11,11 +11,12 @@
                 necesario para crear tus stands</span>
         </p>
         @if ($expos)
+            {{-- THIS IS THE TABLE --}}
             <x-expos-table :expos="$expos" />
         @else
             <p>Crea tu primer evento!</p>
         @endif
-        <a href="#"
+        <a href="{{route('expos.create')}}"
             class="mt-4 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
             Crear Nuevo Evento
             <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
