@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExpoController;
+use App\Http\Controllers\StandController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::resource('expos', ExpoController::class);
+Route::resource('stands', StandController::class);
+Route::get('/', [StandController::class, 'standsHome'])->name('stands.home');
+Route::post('/', [StandController::class, 'initial_store'])->name('stands.initial');

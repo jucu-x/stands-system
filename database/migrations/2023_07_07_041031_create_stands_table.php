@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('stands', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 4)->unique();
+            $table->string('code', 4);
             $table->boolean('partial_time')->default(false);
             $table->decimal('expected_cost', 8, 2)->nullable();
             $table->string('building')->nullable();
