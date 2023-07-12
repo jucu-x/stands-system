@@ -50,9 +50,14 @@
                             class="font-medium text-green-600 dark:text-green-500 hover:underline">
                             <i class="ri-store-2-line"></i>
                         </a>
-                        <a data-tooltip-target="tooltip-delete-link" href="#"
-                            class="font-medium text-red-600 dark:text-red-500 hover:underline"><i
-                                class="ri-delete-bin-fill"></i></a>
+                        <form action="{{ route('expos.destroy', $expo) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" data-tooltip-target="tooltip-delete-link"
+                                class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                <i class="ri-delete-bin-fill"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

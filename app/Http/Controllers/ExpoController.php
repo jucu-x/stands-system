@@ -61,6 +61,7 @@ class ExpoController extends Controller
      */
     public function destroy(Expo $expo)
     {
-        //
+        $expo->delete();
+        return redirect()->route('expos.index');
     }
 }
