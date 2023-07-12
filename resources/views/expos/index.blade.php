@@ -10,7 +10,7 @@
                 class="font-semibold text-gray-900 underline dark:text-white decoration-blue-500 decoration-double">Es
                 necesario para crear tus stands</span>
         </p>
-        @if ($expos)
+        @if ($expos->isNotEmpty())
             {{-- THIS IS THE TABLE --}}
             <x-expos-table :expos="$expos" />
         @else
