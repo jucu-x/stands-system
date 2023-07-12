@@ -11,17 +11,22 @@ export default {
         fontFamily: {
             sans: ['Lato', 'sans-serif'],
             serif: ['Playfair Display', 'serif'],
+            mono: ['JetBrains Mono', 'monospace']
         },
         extend: {
             colors:{
                 fitectur:{
                     red: '#d21d22',
-                    blue: '#2532dc',
-                    blue2: '#284592',
+                    blue:{
+                        normal:'#25325d',
+                        dark: '#192240',
+                        alt: '#284592',
+                    },
                     gray:{
                         1: '#737373',
                         2: '#ebebeb',
                         3: '#9d9d9c',
+                        dark: '#1c1c1c'
                     },
                     purple: '#572e7b',
                     yellow: '#f8da29',
