@@ -21,4 +21,7 @@ class Expo extends Model
         'start_date' => 'date',
         'end_date' => 'date',
     ];
+    public function summary(): string{
+        return $this->name . " - " . $this->version . " - " . $this->start_date->format("Y");
+    }
 }
