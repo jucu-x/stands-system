@@ -1,3 +1,3 @@
 import 'flowbite';
 import './components';
-let hola="hola";
+import 'remixicon/fonts/remixicon.css'
