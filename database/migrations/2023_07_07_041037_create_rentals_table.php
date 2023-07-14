@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('stand_start_date');
-            $table->timestamp('stand_end_date');
+            $table->timestamp('stand_start_date')->nullable();
+            $table->timestamp('stand_end_date')->nullable();
             $table->decimal('final_cost', 8, 2);
             $table->string('invoice_name')->nullable()->default('Sin nombre');
             $table->string('invoice_number')->nullable()->default('0');
