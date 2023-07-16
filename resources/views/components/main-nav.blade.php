@@ -26,15 +26,15 @@
                         class="block py-2 pl-3 pr-4 text-fitectur-blue-normal rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-fitectur-blue-alt md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Eventos</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{route('institutions.index')}}"
                         class="block py-2 pl-3 pr-4 text-fitectur-blue-normal rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-fitectur-blue-alt md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Instituciones</a>
                 </li>
                 <li>
-                    <a href="{{route('stands.home')}}"
+                    <a href="{{route('stands.index')}}"
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Stands</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{route('about')}}"
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
                 </li>
             </ul>
