@@ -4,11 +4,10 @@
             class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             Stands {{$selected_expo?->summary()}}</h1>
             <form action="{{route('stands.index')}}" method="get" class="flex justify-center items-baseline gap-4">
-                <x-form.select name="expo_id" :label="null" :collection="$expos" default="Elige un evento" summary_method="summary"/>
+                <x-form.select name="expo_id" :label="null" :collection="$expos" default="Todos los eventos" summary_method="summary" :selected_value="$selected_expo?->id"/>
                 <x-form.submit-button>Elegir</x-form.submit-button>
             </form>
-        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Elige uno de
-            Centro de administración de stands para tu evento. <span href="#"
+        <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Centro de administración de stands para tu evento. <span href="#"
                 class="font-semibold text-gray-900 underline dark:text-white decoration-blue-500 decoration-double">Puedes crear stands nuevos</span>
         </p>
         @if ($stands->isNotEmpty())
@@ -23,7 +22,10 @@
 
             @endforeach
         @else
-        <p>No hay stands. Ve al home para realizar la creación en bulk</p>
+        @if ($selected_expo)
+
+        <p>No hay stands en este evento aún. Ve a <a class="underline" href="{{route('stands.bulk-create', $selected_expo)}}">esta página</a> para realizar la creación en masa o créalos uno por uno con el botón de abajo</p>
+        @endif
         <x-atomic.action-button>Crear Stand</x-atomic.action-button>
         @endif
     </div>
