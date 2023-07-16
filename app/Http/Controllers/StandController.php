@@ -19,17 +19,22 @@ class StandController extends Controller
      */
     public function index()
     {
-        
+
         $expos = Expo::all();
         if (request()->get('expo_id')) {
             $selected_expo = Expo::find(request()->get('expo_id'));
-            $stands = Stand::where('expo_id', request()->get('expo_id'))->get();
-        }
-        else{
+            if ($selected_expo==null) {
+                # code...
+                $stands = Stand::all();
+            } else {
+                $stands = Stand::where('expo_id', $selected_expo->id)->get();
+
+            }
+        } else {
             $selected_expo = null;
             $stands = Stand::all();
         }
-        return view('stands.index', ['stands'=>$stands, 'expos'=>$expos, 'selected_expo'=>$selected_expo]);
+        return view('stands.index', ['stands' => $stands, 'expos' => $expos, 'selected_expo' => $selected_expo]);
     }
 
     /**
