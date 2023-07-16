@@ -19,5 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('expos', ExpoController::class);
 Route::resource('stands', StandController::class);
+Route::resource('institutions', InstitutionController::class);
 Route::get('/', [StandController::class, 'standsHome'])->name('stands.home');
 Route::post('/', [StandController::class, 'initial_store'])->name('stands.initial');
+Route::get('stands/bulk/{expo}', [StandController::class, 'bulkCreate'])->name('stands.bulk-create');
+Route::post('stands/bulk/', [StandController::class, 'bulkStore'])->name('stands.bulk-store');
+Route::get('about', function () {
+    return view('stands.home');
+})->name('about');
+

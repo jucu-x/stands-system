@@ -37,6 +37,15 @@ class StandController extends Controller
         return view('stands.index', ['stands' => $stands, 'expos' => $expos, 'selected_expo' => $selected_expo]);
     }
 
+
+    /**
+     * Show the form for creating many stands .
+     */
+    public function bulkCreate(Expo $expo)
+    {
+        $expos = Expo::all();
+        return view('stands.bulk-create', ['expos' => $expos, 'selected_expo' => $expo]);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -45,6 +54,46 @@ class StandController extends Controller
         //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function bulkStore(Request $request)
+    {
+
+        $validated = $request->validate(
+            [
+                'expo_id' => 'exists:expos,id',
+                'normal-stands-count' => 'integer|numeric|min:0|max:150',
+                'partial-stands-count' => 'integer|numeric|min:0|max:150',
+            ]
+        );
+        $normal_start = 1;
+        $normal_end = intval($validated['normal-stands-count']);
+        $partial_start = $normal_end + 1;
+        $partial_end = $partial_start + $validated['partial-stands-count'];
+        //dd($request, $normal_end, $partial_start,  $partial_end);
+        for ($i = $normal_start; $i <= $normal_end; $i++) {
+            # code...
+            Stand::create(
+                [
+                    "code" => $i,
+                    "partial_time" => false,
+                    "expo_id" => $request['expo_id']
+                ]
+            );
+        }
+        for ($i = $partial_start; $i <= $partial_end; $i++) {
+            # code...
+            Stand::create(
+                [
+                    "code" => $i,
+                    "partial_time" => true,
+                    "expo_id" => $request['expo_id']
+                ]
+            );
+        }
+        return redirect()->route('stands.index');
+    }
     /**
      * Store a newly created resource in storage.
      */
