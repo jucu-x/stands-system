@@ -27,6 +27,8 @@ return new class extends Migration
             $table->foreignId('updated_by')->nullable()->constrained('users', 'id')->onDelete('SET NULL');
 
             $table->timestamps();
+
+            $table->unique(['code', 'expo_id'], 'unique_code_in_expo');
         });
     }
 
