@@ -164,6 +164,15 @@ class StandController extends Controller
     {
         //
     }
+    /**
+     * Remove all
+     */
+    public function destroyAllInExpo(Expo $expo)
+    {
+        Stand::where('expo_id', $expo->id)->delete();
+        return back();
+    }
+
     private function bulkCodesIntervals($normal_stands_amount, $partial_stands_amount, $last_code = 0): array
     {
         $normal_code_i = $last_code + 1;
