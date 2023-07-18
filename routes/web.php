@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExpoController;
 use App\Http\Controllers\StandController;
+use App\Http\Controllers\InstitutionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +16,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Resource Routes for all the implicated resource controllers
+ */
+Route::resources([
+    'expos' => ExpoController::class,
+    'stands' => StandController::class,
+    'institutions' => InstitutionController::class,
+    // 'stands' => StandRequestController::class,
+    // 'stands' => AnonymousStandRequestController::class,
+    // 'stands' => InstitutionStandRequestController::class,
+    // 'stands' => RentalController::class,
+]);
 
+/**
+ * Stand routes
+ */
+Route::controller(StandController::class)
+    ->name('stands.')
+    ->prefix('stands')
+    ->group(function () {
+        Route::get('/bulk/{expo}', 'bulkCreate')->name('bulk-create');
+        Route::delete('/destroy-all/{expo}', 'destroyAllInExpo')->name('destroy-all-in-expo');
+        Route::post('/bulk', 'bulkStore')->name('bulk-store');
+    });
 
-Route::resource('expos', ExpoController::class);
-Route::resource('stands', StandController::class);
-Route::resource('institutions', InstitutionController::class);
-Route::get('/', [StandController::class, 'standsHome'])->name('stands.home');
-Route::post('/', [StandController::class, 'initial_store'])->name('stands.initial');
-Route::get('stands/bulk/{expo}', [StandController::class, 'bulkCreate'])->name('stands.bulk-create');
-Route::post('stands/bulk/', [StandController::class, 'bulkStore'])->name('stands.bulk-store');
+/**
+ * Site generic routes
+ */
 Route::get('about', function () {
-    return view('stands.home');
+    return view('about');
 })->name('about');
-
