@@ -39,7 +39,7 @@ class StandController extends Controller
 
 
     /**
-     * Show the form for creating many stands .
+     * Show the form for creating stands in bulk .
      */
     public function bulkCreate(Expo $expo)
     {
@@ -67,28 +67,27 @@ class StandController extends Controller
                 'partial-stands-count' => 'integer|numeric|min:0|max:150',
             ]
         );
-        $normal_start = 1;
-        $normal_end = intval($validated['normal-stands-count']);
-        $partial_start = $normal_end + 1;
-        $partial_end = $partial_start + $validated['partial-stands-count'];
-        //dd($request, $normal_end, $partial_start,  $partial_end);
-        for ($i = $normal_start; $i <= $normal_end; $i++) {
-            # code...
+
+        $interval = $this->bulkCodesIntervals(
+            $validated['normal-stands-count'],
+            $validated['partial-stands-count'],
+            Stand::lastCodeInExpo($validated['expo_id'])
+        );
+        for ($i = $interval['normal_code_i']; $i <= $interval['normal_code_n']; $i++) {
             Stand::create(
                 [
                     "code" => $i,
                     "partial_time" => false,
-                    "expo_id" => $request['expo_id']
+                    "expo_id" => $validated['expo_id']
                 ]
             );
         }
-        for ($i = $partial_start; $i <= $partial_end; $i++) {
-            # code...
+        for ($i = $interval['partial_code_i']; $i <= $interval['partial_code_n']; $i++) {
             Stand::create(
                 [
                     "code" => $i,
                     "partial_time" => true,
-                    "expo_id" => $request['expo_id']
+                    "expo_id" => $validated['expo_id']
                 ]
             );
         }
@@ -164,5 +163,18 @@ class StandController extends Controller
     public function destroy(Stand $stand)
     {
         //
+    }
+    private function bulkCodesIntervals($normal_stands_amount, $partial_stands_amount, $last_code = 0): array
+    {
+        $normal_code_i = $last_code + 1;
+        $normal_code_n = $last_code + $normal_stands_amount;
+        $partial_code_i = $normal_code_n + 1;
+        $partial_code_n = $normal_code_n + $partial_stands_amount;
+        return [
+            'normal_code_i' => $normal_code_i,
+            'normal_code_n' => $normal_code_n,
+            'partial_code_i' => $partial_code_i,
+            'partial_code_n' => $partial_code_n
+        ];
     }
 }

@@ -23,8 +23,10 @@
             @endforeach
         @else
         @if ($selected_expo)
-
-        <p>No hay stands en este evento aún. Ve a <a class="underline" href="{{route('stands.bulk-create', $selected_expo)}}">esta página</a> para realizar la creación en masa o créalos uno por uno con el botón de abajo</p>
+                <p>No hay stands en este evento aún. Ve a <a class="underline"
+                        href="{{ route('stands.bulk-create', $selected_expo) }}">esta página</a> para realizar la
+                    creación en masa o créalos uno por uno con el botón de abajo</p>
+            @endif
         @endif
         <x-atomic.action-button>Crear Stand</x-atomic.action-button>
         @endif
