@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\ExpoController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\InstitutionController;
@@ -42,8 +43,10 @@ Route::controller(StandController::class)
     });
 
 /**
- * Site generic routes
+ * Generic site routes
  */
-Route::get('about', function () {
-    return view('about');
-})->name('about');
+Route::controller(AppController::class)
+    ->group(function () {
+        Route::get('/', 'home')->name('home');
+        Route::get('/about', 'about')->name('about');
+    });

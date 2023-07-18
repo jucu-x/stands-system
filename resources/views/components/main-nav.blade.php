@@ -22,6 +22,10 @@
                 class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-fitectur-gray-dark md:dark:bg-fitectur-gray-dark dark:border-gray-700">
 
                 <li>
+                    <a href="{{route('home')}}"
+                        class="block py-2 pl-3 pr-4 text-fitectur-blue-normal rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-fitectur-blue-alt md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Home</a>
+                </li>
+                <li>
                     <a href="{{route('expos.index')}}"
                         class="block py-2 pl-3 pr-4 text-fitectur-blue-normal rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-fitectur-blue-alt md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Eventos</a>
                 </li>
