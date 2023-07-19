@@ -15,15 +15,16 @@
         </p>
         @if ($stands->isNotEmpty())
 
-            @foreach ($stands as $stand)
-                @if ($stand->partial_time)
-                    <button type="button"
-                        class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">{{ $stand->code }}</button>
-                @else
-                    <button type="button"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{{ $stand->code }}</button>
-                @endif
-            @endforeach
+            <div class="flex mx-4 my-4 gap-4">
+                <span class="flex items-center text-sm font-medium text-gray-900 dark:text-white"><span
+                        class="flex w-2.5 h-2.5 bg-yellow-400 rounded-full mr-1.5 flex-shrink-0"></span>Stands de tiempo
+                    parcial</span>
+                <span class="flex items-center text-sm font-medium text-gray-900 dark:text-white"><span
+                        class="flex w-2.5 h-2.5 bg-blue-600 rounded-full mr-1.5 flex-shrink-0"></span>Stands full
+                    time</span>
+            </div>
+
+            <x-stands.table :stands="$stands" />
         @else
             @if ($selected_expo)
                 <p>No hay stands en este evento aún. Ve a <a class="underline"
