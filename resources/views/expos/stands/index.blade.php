@@ -24,7 +24,7 @@
             <x-stands.table :stands="$stands" />
         @else
             <p>No hay stands en este evento aún. Ve a <a class="underline"
-                    href="{{ route('stands.bulk-create', $expo) }}">esta página</a> para realizar la
+                    href="{{ route('expos.stands.bulk.create', $expo) }}">esta página</a> para realizar la
                 creación en masa o créalos uno por uno con el botón de abajo</p>
         @endif
         <div class="flex justify-center items-center gap-4 my-4">
@@ -34,7 +34,7 @@
                     data-modal-toggle="delete_all_modal" color="red" :class="[]">Eliminar TODOS los stands del
                     evento</x-atomic.default-button>
                 <x-atomic.deletion-modal id="delete_all_modal"
-                    action="{{ route('stands.destroy-all-in-expo', $expo) }}" />
+                    action="{{ route('expos.stands.bulk.destroy', $expo) }}" />
             @endif
         </div>
     </div>

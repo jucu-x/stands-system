@@ -44,16 +44,6 @@ class Stand extends Model
         return $this->belongsTo(Expo::class);
     }
 
-    /**
-     * Finds the last created stand's code for any specific expo
-     * @param int $expo_id expo->id
-     * @return int last stand's code (0 if none)
-     */
-    static public function lastCodeInExpo($expo_id): int
-    {
-        return intval(self::where('expo_id', $expo_id)->orderBy('code', 'desc')->first()?->code);
-    }
-
     static public function fieldsToVerbose(array $fields_array): array{
         $verbose_fields_array = [];
         foreach ($fields_array as $field) {
