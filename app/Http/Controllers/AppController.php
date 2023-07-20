@@ -21,4 +21,12 @@ class AppController extends Controller
     {
         return view('about');
     }
+
+    /**
+     * Dummy action to show the dummy view
+     */
+    public function dump()
+    {
+        return view('dump');
+    }
 }

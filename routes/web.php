@@ -49,4 +49,6 @@ Route::controller(AppController::class)
     ->group(function () {
         Route::get('/', 'home')->name('home');
         Route::get('/about', 'about')->name('about');
+        // Dummy Route to test by the developer
+        Route::get('/dump', 'dump')->name('dump');
     });
