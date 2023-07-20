@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\ExpoController;
+use App\Http\Controllers\ExpoStandController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\InstitutionController;
 use Illuminate\Support\Facades\Route;
@@ -23,11 +24,13 @@ use Illuminate\Support\Facades\Route;
 Route::resources([
     'expos' => ExpoController::class,
     'stands' => StandController::class,
-    'institutions' => InstitutionController::class,
+    'expos.stands' => ExpoStandController::class,
+    //'institutions' => InstitutionController::class,
     // 'stands' => StandRequestController::class,
     // 'stands' => AnonymousStandRequestController::class,
     // 'stands' => InstitutionStandRequestController::class,
     // 'stands' => RentalController::class,
+
 ]);
 
 /**
@@ -50,5 +53,5 @@ Route::controller(AppController::class)
         Route::get('/', 'home')->name('home');
         Route::get('/about', 'about')->name('about');
         // Dummy Route to test by the developer
-        Route::get('/dump', 'dump')->name('dump');
+        Route::get('/dump/{desc?}', 'dump')->name('dump');
     });

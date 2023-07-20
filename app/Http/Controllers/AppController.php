@@ -25,8 +25,8 @@ class AppController extends Controller
     /**
      * Dummy action to show the dummy view
      */
-    public function dump()
+    public function dump($desc=null)
     {
-        return view('dump');
+        return view('dump', ['message'=>$desc]);
     }
 }
