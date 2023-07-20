@@ -5,6 +5,7 @@ use App\Http\Controllers\ExpoController;
 use App\Http\Controllers\ExpoStandController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\InstitutionController;
+use App\Models\Expo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,17 +22,9 @@ use Illuminate\Support\Facades\Route;
 /**
  * Resource Routes for all the implicated resource controllers
  */
-Route::resources([
-    'expos' => ExpoController::class,
-    'stands' => StandController::class,
-    'expos.stands' => ExpoStandController::class,
-    //'institutions' => InstitutionController::class,
-    // 'stands' => StandRequestController::class,
-    // 'stands' => AnonymousStandRequestController::class,
-    // 'stands' => InstitutionStandRequestController::class,
-    // 'stands' => RentalController::class,
-
-]);
+Route::resource('expos',        ExpoController::class)->except(['show']);
+Route::resource('stands',       StandController::class)->only(['index']);
+Route::resource('expos.stands', ExpoStandController::class)->only(['index']);
 
 /**
  * Stand routes

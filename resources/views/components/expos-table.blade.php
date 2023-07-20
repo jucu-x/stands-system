@@ -46,7 +46,7 @@
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="ri-pencil-fill"></i>
                         </a>
-                        <a data-tooltip-target="tooltip-stands-link" href="#"
+                        <a data-tooltip-target="tooltip-stands-link" href="{{route('expos.stands.index', $expo)}}"
                             class="font-medium text-green-600 dark:text-green-500 hover:underline">
                             <i class="ri-store-2-line"></i>
                         </a>

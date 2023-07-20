@@ -9,9 +9,9 @@
                         {{ $heading }}
                     </th>
                 @endforeach
-                <th scope="col" class="px-6 py-3">
+                {{-- <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Acciones</span>
-                </th>
+                </th> --}}
             </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
                         @endif
                     @endforeach
 
-                    <td class="px-6 py-4 flex gap-4">
+                    {{-- <td class="px-6 py-4 flex gap-4">
                         <a data-tooltip-target="tooltip-edit-link" href="{{ route('stands.edit', $stand) }}"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="ri-pencil-fill"></i>
@@ -60,7 +60,7 @@
                                 <i class="ri-delete-bin-fill"></i>
                             </button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
 
