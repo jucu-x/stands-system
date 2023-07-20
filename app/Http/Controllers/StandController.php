@@ -18,18 +18,10 @@ class StandController extends Controller
     /**
      * Display a listing of the stands.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $selected_expo = Expo::find($request->query('expo_id'));
-        if ($selected_expo) {
-            $stands = $selected_expo->stands;
-        } else {
-            $stands = Stand::all();
-        }
         return view('stands.index', [
-            'stands' => $stands,
-            'expos' => Expo::all(),
-            'selected_expo' => $selected_expo
+            'stands' => Stand::all(),
         ]);
     }
 
@@ -89,7 +81,7 @@ class StandController extends Controller
      ***********************************************/
 
     /**
-     * Show the form for creating stands in bulk .
+     * Show the form for creating stands for an expo in bulk .
      */
     public function bulkCreate(Expo $expo)
     {
