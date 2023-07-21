@@ -37,13 +37,13 @@ class ExpoStandController extends Controller
     {
         $validated = $request->validate([
             'code' => ['required', Rule::unique('stands')->where(fn (Builder $query) => $query->where('expo_id', $expo->id)), 'max:4'],
-                'expected_cost' => 'decimal:0,2|nullable',
-                'building' => 'max:255|nullable',
+            'expected_cost' => 'decimal:0,2|nullable',
+            'building' => 'max:255|nullable',
             'x' => 'numeric|nullable',
             'y' => 'numeric|nullable',
             'width' => 'numeric|nullable',
             'length' => 'numeric|nullable',
-            ]);
+        ]);
         // dd(array_merge($validated, ['partial_time'=>$request->has('partial_time'),'expo_id'=>$expo->id]));
         Stand::create(array_merge($validated, ['partial_time' => $request->has('partial_time'), 'expo_id' => $expo->id]));
         return redirect()->route('expos.stands.index', $expo);
@@ -60,17 +60,33 @@ class ExpoStandController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Expo $expo, Stand $stand)
     {
-        //
+        return view('expos.stands.edit', ['expo' => $expo, 'stand' => $stand]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Expo $expo, Stand $stand)
     {
-        //
+        $validated = $request->validate([
+            'code' => [
+                'required',
+                Rule::unique('stands')
+                    ->where(fn (Builder $query) => $query->where('expo_id', $expo->id)->whereNot('code', $stand->code)),
+                'max:4'
+            ],
+            'expected_cost' => 'decimal:0,2|nullable',
+            'building' => 'max:255|nullable',
+            'x' => 'numeric|nullable',
+            'y' => 'numeric|nullable',
+            'width' => 'numeric|nullable',
+            'length' => 'numeric|nullable',
+        ]);
+        // dd(array_merge($validated, ['partial_time'=>$request->has('partial_time'),'expo_id'=>$expo->id]));
+        $stand->update( array_merge($validated, ['partial_time' => $request->has('partial_time'), 'expo_id' => $expo->id]) );
+        return redirect()->route('expos.stands.index', $expo);
     }
 
     /**

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::resource('expos',        ExpoController::class)->except(['show']);
 Route::resource('stands',       StandController::class)->only(['index']);
-Route::resource('expos.stands', ExpoStandController::class)->only(['index', 'create', 'store']);
+Route::resource('expos.stands', ExpoStandController::class)->only(['index', 'create', 'store', 'edit', 'update']);
 
 /**
  * Bulk operations routes for stands in Expo
