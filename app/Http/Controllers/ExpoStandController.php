@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expo;
+use App\Models\Stand;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ExpoStandController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the stands for an expo
      */
     public function index(Expo $expo)
     {
@@ -20,19 +23,30 @@ class ExpoStandController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new stand for this expo
      */
-    public function create()
+    public function create(Expo $expo)
     {
-        //
+        return view('expos.stands.create', ['expo' => $expo]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created expo's stand in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Expo $expo)
     {
-        //
+        $validated = $request->validate([
+            'code' => ['required', Rule::unique('stands')->where(fn (Builder $query) => $query->where('expo_id', $expo->id)), 'max:4'],
+                'expected_cost' => 'decimal:0,2|nullable',
+                'building' => 'max:255|nullable',
+            'x' => 'numeric|nullable',
+            'y' => 'numeric|nullable',
+            'width' => 'numeric|nullable',
+            'length' => 'numeric|nullable',
+            ]);
+        // dd(array_merge($validated, ['partial_time'=>$request->has('partial_time'),'expo_id'=>$expo->id]));
+        Stand::create(array_merge($validated, ['partial_time' => $request->has('partial_time'), 'expo_id' => $expo->id]));
+        return redirect()->route('expos.stands.index', $expo);
     }
 
     /**
@@ -40,7 +54,7 @@ class ExpoStandController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**

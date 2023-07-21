@@ -5,8 +5,6 @@ use App\Http\Controllers\ExpoController;
 use App\Http\Controllers\ExpoStandBulkController;
 use App\Http\Controllers\ExpoStandController;
 use App\Http\Controllers\StandController;
-use App\Http\Controllers\InstitutionController;
-use App\Models\Expo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,19 +23,19 @@ use Illuminate\Support\Facades\Route;
  */
 Route::resource('expos',        ExpoController::class)->except(['show']);
 Route::resource('stands',       StandController::class)->only(['index']);
-Route::resource('expos.stands', ExpoStandController::class)->only(['index']);
+Route::resource('expos.stands', ExpoStandController::class)->only(['index', 'create', 'store']);
 
 /**
  * Bulk operations routes for stands in Expo
  */
 Route::controller(ExpoStandBulkController::class)
-->name('expos.stands.bulk.')
-->prefix('expos/{expo}/stands/bulk')
-->group(function () {
-    Route::get('/create', 'create')->name('create');
-    Route::post('/', 'store')->name('store');
-    Route::delete('/', 'destroy')->name('destroy');
-});
+    ->name('expos.stands.bulk.')
+    ->prefix('expos/{expo}/stands/bulk')
+    ->group(function () {
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::delete('/', 'destroy')->name('destroy');
+    });
 
 /**
  * Generic site routes
