@@ -21,7 +21,7 @@
                     time</span>
             </div>
 
-            <x-stands.table :stands="$stands" />
+            <x-expos.stands.table :stands="$stands" />
         @else
             <p>No hay stands en este evento aún. Ve a <a class="underline"
                     href="{{ route('expos.stands.bulk.create', $expo) }}">esta página</a> para realizar la
