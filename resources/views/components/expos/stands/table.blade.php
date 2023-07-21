@@ -22,13 +22,13 @@
                         @if ($i == 0)
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
-                                <p  @class([
+                                <p @class([
                                     'w-fit',
                                     'p-2',
                                     'rounded-md',
                                     'text-white',
                                     'bg-yellow-400' => $stand->partial_time,
-                                    'bg-blue-600' => !$stand->partial_time
+                                    'bg-blue-600' => !$stand->partial_time,
                                 ])>{{ $stand->{$field} }}</p>
                             </th>
                         @else
@@ -44,7 +44,8 @@
                     @endforeach
 
                     <td class="px-6 py-4 flex gap-4">
-                        <a data-tooltip-target="tooltip-edit-link" href="{{ route('expos.stands.edit', ['expo'=>$stand->expo, 'stand'=>$stand]) }}"
+                        <a data-tooltip-target="tooltip-edit-link"
+                            href="{{ route('expos.stands.edit', ['expo' => $stand->expo, 'stand' => $stand]) }}"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="ri-pencil-fill"></i>
                         </a>
@@ -52,14 +53,16 @@
                             class="font-medium text-green-600 dark:text-green-500 hover:underline">
                             <i class="ri-store-2-line"></i>
                         </a>
-                        {{-- <form action="{{ route('stands.destroy', $stand) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" data-tooltip-target="tooltip-delete-link"
-                                class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                <i class="ri-delete-bin-fill"></i>
-                            </button>
-                        </form> --}}
+                        <button type="button" data-tooltip-target="tooltip-delete-link"
+                            data-modal-target="delete_{{ $stand->id }}_modal"
+                            data-modal-toggle="delete_{{ $stand->id }}_modal"
+                            class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                            <i class="ri-delete-bin-fill"></i>
+                        </button>
+                        <x-atomic.deletion-modal id="{{ 'delete_' . $stand->id . '_modal' }}"
+                            action="{{ route('expos.stands.destroy', ['expo' => $stand->expo, 'stand' => $stand]) }}">
+                            Estas seguro de ELIMINAR el stand {{ $stand->code }} del evento
+                            {{ $stand->expo->summary() }}?</x-atomic.deletion-modal>
                     </td>
                 </tr>
             @endforeach

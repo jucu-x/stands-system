@@ -28,13 +28,13 @@
                 creación en masa o créalos uno por uno con el botón de abajo</p>
         @endif
         <div class="flex justify-center items-center gap-4 my-4">
-            <x-atomic.action-button :href="route('expos.stands.create', $expo)" >Crear nuevo stand del evento</x-atomic.action-button>
+            <x-atomic.action-button :href="route('expos.stands.create', $expo)" >Crear nuevo stand para el evento</x-atomic.action-button>
             @if ($stands->isNotEmpty())
                 <x-atomic.default-button type="button" data-modal-target="delete_all_modal"
                     data-modal-toggle="delete_all_modal" color="red" :class="[]">Eliminar TODOS los stands del
                     evento</x-atomic.default-button>
                 <x-atomic.deletion-modal id="delete_all_modal"
-                    action="{{ route('expos.stands.bulk.destroy', $expo) }}" />
+                    action="{{ route('expos.stands.bulk.destroy', $expo) }}">Estás seguro de querer ELIMINAR TODOS los stands del evento {{$expo->summary()}}?</x-atomic.deletion-modal>
             @endif
         </div>
     </div>

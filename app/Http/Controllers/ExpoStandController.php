@@ -92,8 +92,9 @@ class ExpoStandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Expo $expo, Stand $stand)
     {
-        //
+        $stand->delete();
+        return redirect()->route('expos.stands.index', $expo);
     }
 }
