@@ -16,11 +16,12 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('version')->nullable();
-            $table->timestamp('end_date')->nullable();
             $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->string('description')->nullable();
             $table->string('organizer')->nullable();
             $table->string('logo')->nullable();
+            $table->string('map')->nullable();
 
             $table->foreignId('created_by')->nullable()->constrained("users", 'id')->onDelete("SET NULL");
             $table->foreignId('updated_by')->nullable()->constrained('users', 'id')->onDelete("SET NULL");
