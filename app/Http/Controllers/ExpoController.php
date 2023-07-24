@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expo;
+use App\Models\ExpoSelector;
 use Illuminate\Http\Request;
 
 class ExpoController extends Controller
@@ -13,7 +14,7 @@ class ExpoController extends Controller
     public function index()
     {
         $expos = Expo::all();
-        return view('expos.index', ["expos"=>$expos]);
+        return view('expos.index', ["expos"=>$expos, "current_expo"=>ExpoSelector::current()->expo]);
     }
 
     /**
