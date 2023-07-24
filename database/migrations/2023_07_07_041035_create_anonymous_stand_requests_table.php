@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('anonymous_stand_requests', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('stand_request_id')->unique()->constrained()->onDelete('CASCADE');
+            // $table->id();
+            $table->foreignId('id')->unique()->constrained('stand_requests')->onDelete('CASCADE');
             $table->string('name');
             $table->string('email');
             $table->text('activity')->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('tiktok')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('youtube')->nullable();
-
+            $table->primary('id');
         });
     }
 
