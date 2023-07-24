@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AnonymousStandRequest;
 use App\Models\Stand;
+use App\Models\StandRequest;
 use Illuminate\Http\Request;
 
 class AnonymousStandRequestController extends Controller
@@ -27,9 +28,23 @@ class AnonymousStandRequestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Stand $stand)
     {
-        //
+        $validated = $request->validate(
+            [
+                'name' => 'required|max:255',
+                'email' => 'required|email',
+                'address' => 'nullable|max:255',
+                'phone_number' => 'required|max:15|min:7',
+                'request_message' => 'nullable|max:2000',
+                'stand_start_date' => 'nullable|date',
+                'stand_end_date' => 'nullable|date',
+            ]
+        );
+
+        $parentStandRequest = StandRequest::create(array_merge($validated, ['stand_id' => $stand->id]));
+        AnonymousStandRequest::create(array_merge($validated, ['id' => $parentStandRequest->id]));
+        return redirect()->route('home');
     }
 
     /**
