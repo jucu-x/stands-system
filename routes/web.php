@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\CurrentExpoController;
 use App\Http\Controllers\ExpoController;
 use App\Http\Controllers\ExpoStandBulkController;
 use App\Http\Controllers\ExpoStandController;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('expos',        ExpoController::class)->except(['show']);
 Route::resource('stands',       StandController::class)->only(['index']);
 Route::resource('expos.stands', ExpoStandController::class)->except(['show']);
+Route::resource('current_expos', CurrentExpoController::class)->only(['update', 'destroy']);
 
 /**
  * Bulk operations routes for stands in Expo
