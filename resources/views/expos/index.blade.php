@@ -12,14 +12,14 @@
                 class="font-semibold text-gray-900 underline dark:text-white decoration-blue-500 decoration-double">Es
                 necesario para crear tus stands</span>
         </p>
-        @isset($current_expo)
-            <p>El evento actual es {{ $current_expo->summary() }}. Puedes cambiarlo seleccionando otro de la tabla</p>
-        @else
-            <p>No hay ningún evento seleccionado como el actual. Selecciona uno de la tabla</p>
-        @endisset
         @if ($expos->isNotEmpty())
+            @isset($current_expo)
+                <p>El evento actual es {{ $current_expo->summary() }}. Puedes cambiarlo seleccionando otro de la tabla</p>
+            @else
+                <p>No hay ningún evento seleccionado como el actual. Selecciona uno de la tabla</p>
+            @endisset
             {{-- THIS IS THE TABLE --}}
-            <x-expos-table :expos="$expos" :current_expo="$current_expo"/>
+            <x-expos-table :expos="$expos" :current_expo="$current_expo" />
         @else
             <p>Crea tu primer evento!</p>
         @endif

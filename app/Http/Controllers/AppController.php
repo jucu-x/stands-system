@@ -12,7 +12,7 @@ class AppController extends Controller
     public function home()
     {
         // TODO: Get the id of the selected event
-        $current_expo = ExpoSelector::current()->expo;
+        $current_expo = ExpoSelector::current()?->expo;
         $stands = $current_expo?->stands;
         return view('home', ['stands' => $stands, 'current_expo' => $current_expo]);
     }

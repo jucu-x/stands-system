@@ -14,7 +14,7 @@ class ExpoController extends Controller
     public function index()
     {
         $expos = Expo::all();
-        return view('expos.index', ["expos"=>$expos, "current_expo"=>ExpoSelector::current()->expo]);
+        return view('expos.index', ["expos"=>$expos, "current_expo"=>ExpoSelector::current()?->expo]);
     }
 
     /**
