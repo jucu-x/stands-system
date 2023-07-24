@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AnonymousStandRequest;
+use App\Models\Stand;
 use Illuminate\Http\Request;
 
 class AnonymousStandRequestController extends Controller
@@ -18,9 +19,9 @@ class AnonymousStandRequestController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Stand $stand)
     {
-        //
+        return view('stands.requests.anonymous.create', ['stand' => $stand]);
     }
 
     /**

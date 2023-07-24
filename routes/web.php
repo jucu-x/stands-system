@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnonymousStandRequestController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CurrentExpoController;
 use App\Http\Controllers\ExpoController;
@@ -26,6 +27,8 @@ Route::resource('expos',        ExpoController::class)->except(['show']);
 Route::resource('stands',       StandController::class)->only(['index']);
 Route::resource('expos.stands', ExpoStandController::class)->except(['show']);
 Route::resource('current_expos', CurrentExpoController::class)->only(['update', 'destroy']);
+
+Route::get('anon-stands-requests/create/{stand}', [AnonymousStandRequestController::class, 'create'])->name('anon-stands-requests.create');
 
 /**
  * Bulk operations routes for stands in Expo
