@@ -2,7 +2,12 @@
     <div class="title align-middle text-center">
         <h1
             class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            Stands FITECTUR</h1>
+            @if ($current_expo)
+
+            Stands {{$current_expo->name}}</h1>
+            @else
+            Estamos preparando tu stand
+            @endif
         <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">Elige uno de
             los stands disponibles para nuestro próximo evento. <span href="#"
                 class="font-semibold text-gray-900 underline dark:text-white decoration-blue-500 decoration-double">Sé
@@ -22,10 +27,10 @@
         @else
             <div class="max-w-4xl mx-auto">
                 <x-atomic.alert>No hay stands disponibles actualmente,
-                    @if ($selected_expo)
-                        vuelve en un par de horas.
+                    @if ($current_expo)
+                        Vuelve en un par de horas.
                     @else
-                        espera por nuestro próximo encuentro.
+                        Espera por nuestro próximo encuentro.
                     @endif
                 </x-atomic.alert>
             </div>
