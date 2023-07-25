@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stand;
 use App\Models\StandRequest;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,10 @@ class StandRequestController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Stand $stand)
     {
-        //
+
+        return view('stands.requests.index', ['stand'=>$stand, 'stand_requests'=>$stand->requests]);
     }
 
     /**

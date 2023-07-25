@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Stand extends Model
 {
@@ -42,6 +43,9 @@ class Stand extends Model
     public function expo(): BelongsTo
     {
         return $this->belongsTo(Expo::class);
+    }
+    public function requests() : HasMany {
+        return $this->hasMany(StandRequest::class);
     }
 
     static public function fieldsToVerbose(array $fields_array): array{

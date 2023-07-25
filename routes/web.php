@@ -7,6 +7,7 @@ use App\Http\Controllers\ExpoController;
 use App\Http\Controllers\ExpoStandBulkController;
 use App\Http\Controllers\ExpoStandController;
 use App\Http\Controllers\StandController;
+use App\Http\Controllers\StandRequestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,7 @@ Route::resource('expos.stands', ExpoStandController::class)->except(['show']);
 Route::resource('current_expos', CurrentExpoController::class)->only(['update', 'destroy']);
 
 Route::resource('stands.anonymous_stand_requests', AnonymousStandRequestController::class)->only(['create', 'store']);
+Route::resource('stands.stand_requests', StandRequestController::class)->only(['index', 'edit', 'update', 'destroy', 'show']);
 
 /**
  * Bulk operations routes for stands in Expo

@@ -43,15 +43,20 @@
                         @endif
                     @endforeach
 
-                    <td class="px-6 py-4 flex gap-4">
+                    <td class="px-6 py-4 flex gap-4 items-center">
                         <a data-tooltip-target="tooltip-edit-link"
                             href="{{ route('expos.stands.edit', ['expo' => $stand->expo, 'stand' => $stand]) }}"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                             <i class="ri-pencil-fill"></i>
                         </a>
-                        <a data-tooltip-target="tooltip-stand-requests-link" href="#"
-                            class="font-medium text-green-600 dark:text-green-500 hover:underline">
-                            <i class="ri-store-2-line"></i>
+                        <a data-tooltip-target="tooltip-stand-requests-link"
+                            href="{{ route('stands.stand_requests.index', $stand) }}"
+                            class="relative inline-flex items-center p-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <i class="ri-list-indefinite"></i>
+                            <span class="sr-only">Requests</span>
+                            <div
+                                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                                {{ $stand->requests()->count() }}</div>
                         </a>
                         <button type="button" data-tooltip-target="tooltip-delete-link"
                             data-modal-target="delete_{{ $stand->id }}_modal"
