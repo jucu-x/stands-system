@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ExpoSelector;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::share('current_expo', ExpoSelector::current()->expo);
     }
 }
