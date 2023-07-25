@@ -5,7 +5,7 @@
 
         </a>
         <div class="flex md:order-2">
-            <x-dark-mode-toggle/>
+            <x-dark-mode-toggle />
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-sticky" aria-expanded="false">
@@ -22,27 +22,31 @@
                 class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-fitectur-gray-dark md:dark:bg-fitectur-gray-dark dark:border-gray-700">
 
                 <li>
-                    <a href="{{route('home')}}"
+                    <a href="{{ route('home') }}"
                         class="block py-2 pl-3 pr-4 text-fitectur-blue-normal rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-fitectur-blue-alt md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                         Home</a>
                 </li>
                 <li>
-                    <a href="{{route('expos.index')}}"
+                    <a href="{{ route('expos.index') }}"
                         class="block py-2 pl-3 pr-4 text-fitectur-blue-normal rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-fitectur-blue-alt md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                         Eventos</a>
                 </li>
                 <li>
-                    <a href="{{route('dump', 'link-from-nav-to-institutions')}}"
+                    <a href="{{ route('dump', 'link-from-nav-to-institutions') }}"
                         class="block py-2 pl-3 pr-4 text-fitectur-blue-normal rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-fitectur-blue-alt md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                         Instituciones</a>
                 </li>
                 <li>
-                    <a href="{{route('stands.index')}}"
+                    <a @isset($current_expo)
+                    href="{{ route('expos.stands.index', $current_expo) }}"
+                    @else
+                    href="{{ route('stands.index') }}"
+                    @endisset
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                         Stands</a>
                 </li>
                 <li>
-                    <a href="{{route('about')}}"
+                    <a href="{{ route('about') }}"
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                         About</a>
                 </li>
