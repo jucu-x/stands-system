@@ -60,8 +60,9 @@ class StandRequestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(StandRequest $standRequest)
+    public function destroy(Stand $stand, StandRequest $standRequest)
     {
-        //
+        $standRequest->delete();
+        return redirect()->route('stands.stand_requests.index', $stand);
     }
 }
