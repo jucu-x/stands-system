@@ -8,6 +8,7 @@ use App\Http\Controllers\ExpoStandBulkController;
 use App\Http\Controllers\ExpoStandController;
 use App\Http\Controllers\StandController;
 use App\Http\Controllers\StandRequestController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,3 +57,15 @@ Route::controller(AppController::class)
         // Dummy Route to test by the developer
         Route::get('/dump/{desc?}', 'dump')->name('dump');
     });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
