@@ -20,7 +20,8 @@ class Stand extends Model
         'y',
         'width',
         'length',
-        'expo_id'
+        'expo_id',
+        'available'
     ];
 
     static public $verbose_fields = [
@@ -33,12 +34,14 @@ class Stand extends Model
         'width' => 'Ancho del stand',
         'length' => 'Largo del stand',
         'expo_id' => 'Id del evento',
+        'available' => 'Disponible',
         'created_by' => 'Creado por',
         'updated_by' => 'Última vez modificado por',
         'created_at' => 'Fecha de creación',
         'updated_at' => 'Fecha de última modificación',
         // Custom fields
         'expo' => 'Evento',
+
     ];
     public function expo(): BelongsTo
     {
@@ -55,4 +58,8 @@ class Stand extends Model
         }
         return $verbose_fields_array;
     }
+
+    protected $casts = [
+        'available' => 'boolean',
+    ];
 }
