@@ -1,4 +1,6 @@
 <x-layouts.base>
+    
+
     <div class="title align-middle text-center pb-6 mb-6">
         <h1
             class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
@@ -32,8 +34,8 @@
                             @if ($stand->partial_time) class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
                     @else class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @endif>
                         @else
-                        <a @disabled(true)
-                            class="cursor-not-allowed text-gray-400 bg-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-500 focus:outline-none">
+                            <a @disabled(true)
+                                class="cursor-not-allowed text-gray-400 bg-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-500 focus:outline-none">
                     @endif
                     {{ $stand->code }}</a>
                 @endforeach
