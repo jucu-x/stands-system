@@ -90,6 +90,14 @@ class ExpoStandController extends Controller
     }
 
     /**
+     * Toggles availaboluty of stand
+     */
+    public function toggleAvailability(Expo $expo, Stand $stand) {
+        $stand->available = !$stand->available;
+        $stand->save();
+        return redirect()->route('expos.stands.index', $expo);
+    }
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Expo $expo, Stand $stand)

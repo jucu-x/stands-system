@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::resource('expos',        ExpoController::class)->except(['show']);
 Route::resource('stands',       StandController::class)->only(['index']);
+Route::patch('expos/{expo}/stands/{stand}/toggle_availability', [ExpoStandController::class, 'toggleAvailability'])->name('expos.stands.toggle_availability');
 Route::resource('expos.stands', ExpoStandController::class)->except(['show']);
 Route::resource('current_expos', CurrentExpoController::class)->only(['update', 'destroy']);
 

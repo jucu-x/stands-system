@@ -1,4 +1,4 @@
-@props(['fields' => ['code', 'expo', 'building', 'expected_cost'], 'stands' => null])
+@props(['fields' => ['code', 'expo', 'building', 'expected_cost', 'available'], 'stands' => null])
 
 <div class="relative overflow-x-auto shadow-md">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -36,6 +36,12 @@
                                 @if ($stand->{$field} instanceof \App\Models\Expo)
                                     <a class="underline"
                                         href="{{ route('expos.edit', $stand->{$field}->id) }}">{{ $stand->{$field}->summary() }}</a>
+                                @elseif (is_bool($stand->{$field}))
+                                    <form action="{{route('expos.stands.toggle_availability', ['expo'=>$stand->expo, 'stand'=>$stand])}}" method="post">
+                                        @method('PATCH')
+                                        @csrf
+                                        <x-atomic.toggle-button :switched_on="$stand->{$field}" class="text-3xl" />
+                                    </form>
                                 @else
                                     {{ $stand->{$field} }}
                                 @endif
