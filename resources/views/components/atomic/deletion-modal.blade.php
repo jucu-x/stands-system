@@ -20,7 +20,7 @@
                         d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">{{$slot}}</h3>
-                <form action="{{ $action }}" method="post" class="my-4">
+                <form action="{{ $action }}" method="post" class="my-4" id="{{$id}}-form">
                     @csrf
                     @method('DELETE')
                     <x-atomic.default-button type="submit" color="red" data_modal_hide="{{ $id }}">Sí,
