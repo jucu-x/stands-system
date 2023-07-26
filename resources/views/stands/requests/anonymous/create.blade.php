@@ -30,7 +30,7 @@
             </div>
         @endif
 
-        {{-- IMPORTANT name, email, message, start_date, end_date --}}
+        {{-- IMPORTANT name, email, request_message, stand_start_date, stand_end_date --}}
         {{-- SECONDARY address, phone_number --}}
         {{-- OPTIONAL website, facebook, twitter, instagram, tiktok, linkedin, youtube --}}
         <form action="{{ route('stands.anonymous_stand_requests.store', $stand) }}" method="post">
@@ -43,14 +43,14 @@
                 :required="true" :value="old('phone_number')"/>
             <x-form.basic-input name="address" label="Dirección" placeholder="La Paz, Bolivia, Plaza X, Esquina Y, Av. Z"
                 :required="false" :value="old('address')"/>
-            <x-form.text-area name="message" label="Mensaje de solicitud (opcional)"
+            <x-form.text-area name="request_message" label="Mensaje de solicitud (opcional)"
                 placeholder="Queridos organizadores. Nosotros somos la empresa XYZ, cuyo objetivo en esta nueva entrega del evento es..." />
             @if ($stand->partial_time)
                 <h2 class="block mt-2 text-sm font-medium text-gray-900 dark:text-white">Tiempo de uso del stand
                     solicitado</h2>
                 <div class="flex gap-4 mb-3">
-                    <x-form.date-picker name="start_date" label="Desde" />
-                    <x-form.date-picker name="end_date" label="Hasta" />
+                    <x-form.date-picker name="stand_start_date" label="Desde" />
+                    <x-form.date-picker name="stand_end_date" label="Hasta" />
                 </div>
             @endif
             <x-form.submit-button id="send_request">Enviar Solicitud</x-form.submit-button>
