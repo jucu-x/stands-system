@@ -38,7 +38,7 @@ class StandRequestController extends Controller
      */
     public function show(StandRequest $standRequest)
     {
-        //
+        return view('stands.requests.show', ['stand_request'=>$standRequest]);
     }
 
     /**

@@ -30,7 +30,8 @@ Route::resource('expos.stands', ExpoStandController::class)->except(['show']);
 Route::resource('current_expos', CurrentExpoController::class)->only(['update', 'destroy']);
 
 Route::resource('stands.anonymous_stand_requests', AnonymousStandRequestController::class)->only(['create', 'store']);
-Route::resource('stands.stand_requests', StandRequestController::class)->only(['index', 'edit', 'update', 'destroy', 'show']);
+Route::resource('stands.stand_requests', StandRequestController::class)->only(['index', 'edit', 'update', 'destroy']);
+Route::resource('stand_requests', StandRequestController::class)->only(['show', 'create']);
 
 /**
  * Bulk operations routes for stands in Expo
